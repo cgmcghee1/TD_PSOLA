@@ -4,4 +4,7 @@ Implementation of the TD-PSOLA algorithm as demonstrated in this video http://sp
 
 <p>$ pip install -r requirements.txt </p>
 
-This is a work in progress, as you will be able to hear from the output WAV file. 
+Voicing and peak detection could be better, all the settings are set-up for this specific clip. Usage would be:
+
+<p>TD_PSOLA.shift()</p>
+
