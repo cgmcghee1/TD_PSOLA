@@ -1,7 +1,6 @@
 import numpy as np
 from numpy.fft  import fft, ifft
 from scipy.io import wavfile
-import pudb
 
 class shift:
     """
@@ -179,7 +178,6 @@ class shift:
         :classattribute signal: numpy array of original signal
         :classattribute new_signal: numpy array of synthesised signal
         """
-        pu.db
         temp_diff = 0
 
         for i in range(0, len(peaks) - 1):
