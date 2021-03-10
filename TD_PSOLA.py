@@ -1,6 +1,7 @@
 import numpy as np
 from numpy.fft  import fft, ifft
 from scipy.io import wavfile
+import pudb
 
 class shift:
     """
@@ -178,6 +179,7 @@ class shift:
         :classattribute signal: numpy array of original signal
         :classattribute new_signal: numpy array of synthesised signal
         """
+        pu.db
         temp_diff = 0
 
         for i in range(0, len(peaks) - 1):
@@ -185,11 +187,11 @@ class shift:
 
         diff = int(temp_diff/(len(peaks)-1))
         syn_diff = int(f_ratio * diff)
-        new_peaks_ref = np.arange(max(0, (prev_peak + diff)-frame_floor), len(signal_frame), syn_diff)
+        new_peaks_ref = np.arange(max(0,(prev_peak + syn_diff)-frame_floor), len(signal_frame), syn_diff)
         #creates a numpy array of peak reference positions for the new signal, spaced at points
         #determined by the previous peak and f_ratio
 
-        for i in range(1, len(new_peaks_ref)):
+        for i in range(len(new_peaks_ref)):
 
             peak_id = self.find_nearest_peak_id(peaks_frame, new_peaks_ref[i])
             impulse = self.signal[peaks[peak_id] - diff: peaks[peak_id] + diff]
