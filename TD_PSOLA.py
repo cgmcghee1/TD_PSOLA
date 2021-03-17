@@ -84,6 +84,8 @@ class shift:
         """
 
         signal_frame = signal[i * analysis_frame:(i+1) * analysis_frame ]
+        hanning = np.hanning(len(signal_frame))
+        signal_frame = np.multiply(hanning,signal_frame)
         frame_fft = fft(signal_frame)
         autoc = ifft(frame_fft * np.conj(frame_fft)).real
         inflection = enumerate(np.diff(np.sign(np.diff(autoc))))
