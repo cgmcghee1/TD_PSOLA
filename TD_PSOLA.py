@@ -13,7 +13,7 @@ class shift:
 
 
     def __init__(self, input_wav = "input.wav", output_wav = "output.wav", max_hz = 300, min_hz = 80,\
-                 f_ratio = 0.8, Es = 100000):
+                 f_ratio = .9, Es = 100000):
         """
         The init function reads in a WAV file and outputs a pitch-shifted WAV file using the shift
         class function.
@@ -84,8 +84,6 @@ class shift:
         """
 
         signal_frame = signal[i * analysis_frame:(i+1) * analysis_frame ]
-        hanning = np.hanning(len(signal_frame))
-        signal_frame = np.multiply(hanning,signal_frame)
         frame_fft = fft(signal_frame)
         autoc = ifft(frame_fft * np.conj(frame_fft)).real
         inflection = enumerate(np.diff(np.sign(np.diff(autoc))))
@@ -223,4 +221,4 @@ class shift:
             else:
                 continue
         return peak_id
-
+a = shift()
