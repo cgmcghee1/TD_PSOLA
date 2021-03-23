@@ -221,4 +221,3 @@ class shift:
             else:
                 continue
         return peak_id
-a = shift()
